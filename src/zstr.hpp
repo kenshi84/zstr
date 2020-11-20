@@ -427,7 +427,7 @@ public:
     void close() { _fs.close(); }
     virtual ~ifstream()
     {
-        if (rdbuf()) delete rdbuf();
+        if (std::istream::rdbuf()) delete std::istream::rdbuf();
     }
 }; // class ifstream
 
@@ -456,7 +456,7 @@ public:
     void close() { _fs.close(); }
     virtual ~ofstream()
     {
-        if (rdbuf()) delete rdbuf();
+        if (std::ostream::rdbuf()) delete std::ostream::rdbuf();
     }
 }; // class ofstream
 
