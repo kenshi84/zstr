@@ -419,6 +419,12 @@ public:
     {
         exceptions(std::ios_base::badbit);
     }
+    ifstream& operator=(ifstream&& other ); // TODO?
+    void swap( ifstream& other ); // TODO?
+    std::basic_filebuf<char>* rdbuf() const { return _fs.rdbuf(); }
+    bool is_open() const { return _fs.is_open(); }
+    void open(const std::string& filename, std::ios_base::openmode mode = std::ios_base::in) { _fs.open(filename, mode); }
+    void close() { _fs.close(); }
     virtual ~ifstream()
     {
         if (rdbuf()) delete rdbuf();
@@ -442,6 +448,12 @@ public:
         _fs.flush();
         return *this;
     }
+    ofstream& operator=(ofstream&& other ); // TODO?
+    void swap( ofstream& other ); // TODO?
+    std::basic_filebuf<char>* rdbuf() const { return _fs.rdbuf(); }
+    bool is_open() const { return _fs.is_open(); }
+    void open(const std::string& filename, std::ios_base::openmode mode = std::ios_base::out) { _fs.open(filename, mode); }
+    void close() { _fs.close(); }
     virtual ~ofstream()
     {
         if (rdbuf()) delete rdbuf();
